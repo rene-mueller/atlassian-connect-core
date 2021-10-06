@@ -12,7 +12,7 @@ class CreateTenantTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('plugin.tenant'), function (\Illuminate\Database\Schema\Blueprint $blueprint) {
+        Schema::create(config('connect.tenant'), function (\Illuminate\Database\Schema\Blueprint $blueprint) {
             $blueprint->increments('id');
             $blueprint->string('addon_key');
             $blueprint->string('client_key', 36);
@@ -39,6 +39,6 @@ class CreateTenantTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('plugin.tenant'));
+        Schema::dropIfExists(config('connect.tenant'));
     }
 }

@@ -233,17 +233,17 @@ class Descriptor
     private function defaultContents()
     {
         return [
-            'name' => config('plugin.name'),
-            'description' => config('plugin.description'),
-            'key' => config('plugin.key'),
-            'baseUrl' => config('plugin.url'),
+            'name' => config('connect.name'),
+            'description' => config('connect.description'),
+            'key' => config('connect.key'),
+            'baseUrl' => config('connect.url'),
             'vendor' => [
-                'name' => config('plugin.vendor.name'),
-                'url' => config('plugin.vendor.url'),
+                'name' => config('connect.vendor.name'),
+                'url' => config('connect.vendor.url'),
             ],
-            'version' => config('plugin.version'),
+            'version' => config('connect.version'),
             'authentication' => [
-                'type' => config('plugin.authType')
+                'type' => config('connect.authType')
             ],
             'lifecycle' => [
                 'installed' => route('installed', [], false),

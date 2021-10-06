@@ -15,7 +15,7 @@ class InstallCommandTest extends TestCase
     {
         $this->artisan('plugin:install');
 
-        static::assertFileExists(config_path('plugin.php'));
+        static::assertFileExists(config_path('connect.php'));
         static::assertFileExists(public_path('vendor/plugin/package.png'));
         static::assertFileExists(resource_path('views/vendor/plugin/layout.blade.php'));
         static::assertFileExists(resource_path('views/vendor/plugin/hello.blade.php'));

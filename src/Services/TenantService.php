@@ -127,7 +127,7 @@ class TenantService
      */
     public function delete($id)
     {
-        if(config('plugin.safeDelete')) {
+        if(config('connect.safeDelete')) {
             return $this->repository->delete($id);
         }
 

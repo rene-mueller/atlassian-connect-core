@@ -246,8 +246,8 @@ class QSH
      */
     private function stripBaseUrl(string $url)
     {
-        if (Str::startsWith($url, config('plugin.url'))) {
-            $url = Str::replaceFirst(config('plugin.url'), '', $url);
+        if (Str::startsWith($url, config('connect.url'))) {
+            $url = Str::replaceFirst(config('connect.url'), '', $url);
         }
         return $url;
     }

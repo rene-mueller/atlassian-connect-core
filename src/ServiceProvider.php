@@ -43,7 +43,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/plugin.php', 'plugin'
+            __DIR__ . '/../config/connect.php', 'plugin'
         );
 
         $this->registerFacades();
@@ -55,7 +55,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function loadPublishes()
     {
-        $this->publishes([__DIR__ . '/../config/plugin.php' => config_path('plugin.php')], 'config');
+        $this->publishes([__DIR__ . '/../config/connect.php' => config_path('connect.php')], 'config');
         $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/plugin')], 'views');
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/plugin')], 'public');
     }
@@ -65,7 +65,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function loadRoutes()
     {
-        if(config('plugin.loadRoutes')) {
+        if(config('connect.loadRoutes')) {
             $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
         }
 
@@ -108,7 +108,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function loadWebhooks()
     {
-        foreach (config('plugin.webhooks', []) as $webhook => $listener) {
+        foreach (config('connect.webhooks', []) as $webhook => $listener) {
             \AtlassianConnectCore\Facades\Webhook::listen($webhook, $listener);
         }
     }
@@ -127,7 +127,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function registerJWTGuard()
     {
-        Auth::extend(config('plugin.guard'), function (Application $app, $name, array $config)
+        Auth::extend(config('connect.guard'), function (Application $app, $name, array $config)
         {
             return $app->makeWith(JWTGuard::class, [
                 'provider' => Auth::createUserProvider($config['provider']),

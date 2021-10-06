@@ -79,7 +79,7 @@ class Tenant extends Model implements \Illuminate\Contracts\Auth\Authenticatable
     {
         parent::__construct();
 
-        $this->setTable(config('plugin.tenant'));
+        $this->setTable(config('connect.tenant'));
     }
 
     /**

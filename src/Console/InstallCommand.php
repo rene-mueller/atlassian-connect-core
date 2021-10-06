@@ -59,12 +59,12 @@ class InstallCommand extends Command
      */
     protected function createDummyTenant()
     {
-        if(!Schema::hasTable($tableName = config('plugin.tenant'))) {
+        if(!Schema::hasTable($tableName = config('connect.tenant'))) {
             throw new \Exception('Table ' . $tableName . ' should be exist. Please, run migrations');
         }
 
         $this->tenantService->createOrUpdate([
-            'addon_key' => config('plugin.key'),
+            'addon_key' => config('connect.key'),
             'client_key' => 'f8e11216-24ba-344e-91b8-845af3d945f0',
             'public_key' => 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCK/XMT+GMfzH97nZD1Nj9riBgVZOO/vkJpBAltIEdPBigqHXuv7vG17QrTpzPZQ4ssrpD8RncnLGGevfEXbdNtx50+oUFMjQUde87uyOuBMa5LuhBu47++NEwQKXOC+uw+YJzLb564PDlZGp+OVcKuoDarC/zpw3LezQ2tEJB22QIDAQAB',
             'shared_secret' => 'vf7EKBf79AuaqBEthgiXIqEaEBsxYqndLFh/8VuSPeqE8flI6nJCCLRODOPwQpAXyasUm/f01/h7+diwqMdAYa',

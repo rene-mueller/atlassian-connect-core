@@ -12,7 +12,7 @@ class AddOauthClientTokenColumnToTenantTable extends Migration
      */
     public function up()
     {
-        Schema::table(config('plugin.tenant'), function (\Illuminate\Database\Schema\Blueprint $blueprint) {
+        Schema::table(config('connect.tenant'), function (\Illuminate\Database\Schema\Blueprint $blueprint) {
             $blueprint->string('oauth_client_token')->nullable();
         });
     }
@@ -24,7 +24,7 @@ class AddOauthClientTokenColumnToTenantTable extends Migration
      */
     public function down()
     {
-        Schema::table(config('plugin.tenant'), function (\Illuminate\Database\Schema\Blueprint $blueprint) {
+        Schema::table(config('connect.tenant'), function (\Illuminate\Database\Schema\Blueprint $blueprint) {
             $blueprint->dropColumn('oauth_client_token');
         });
     }
