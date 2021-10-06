@@ -1,9 +1,11 @@
 <?php
 
 use AtlassianConnectCore\Http\Middleware\JWTAuth;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('connect.')
-    ->group(['namespace' => 'AtlassianConnectCore\Http\Controllers', 'prefix' => ''], function () {
+    ->namespace('AtlassianConnectCore\Http\Controllers')
+    ->group(function () {
         Route::get('atlassian-connect.json', 'TenantController@descriptor')->name('descriptor');
 
         Route::post('installed', 'TenantController@installed')->name('installed');
