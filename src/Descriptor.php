@@ -246,10 +246,10 @@ class Descriptor
                 'type' => config('connect.authType')
             ],
             'lifecycle' => [
-                'installed' => route('installed', [], false),
-                'uninstalled' => route('uninstalled', [], false),
-                'enabled' => route('enabled', [], false),
-                'disabled' => route('disabled', [], false)
+                'installed' => route('connect.installed', [], false),
+                'uninstalled' => route('connect.uninstalled', [], false),
+                'enabled' => route('connect.enabled', [], false),
+                'disabled' => route('connect.disabled', [], false)
             ],
             'scopes' => [
                 'ADMIN',

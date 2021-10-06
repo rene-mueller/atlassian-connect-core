@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'AtlassianConnectCore\Http\Controllers'], function () {
+Route::group(['namespace' => 'AtlassianConnectCore\Http\Controllers', 'prefix' => 'connect.'], function () {
     Route::get('atlassian-connect.json', 'TenantController@descriptor')->name('descriptor');
 
     Route::post('installed', 'TenantController@installed')->name('installed');

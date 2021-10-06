@@ -80,7 +80,7 @@ class Webhook
      */
     public function url(string $name, bool $absolute = false)
     {
-        return route('webhook', ['name' => $name], $absolute);
+        return route('connect.webhook', ['name' => $name], $absolute);
     }
 
     /**
