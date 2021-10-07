@@ -5,6 +5,7 @@ namespace AtlassianConnectCore\Console;
 use AtlassianConnectCore\Models\Tenant;
 use AtlassianConnectCore\Services\TenantService;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Arr;
@@ -21,7 +22,7 @@ class DummyCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'plugin:dummy';
+    protected $signature = 'connect:dummy';
 
     /**
      * The console command description.
@@ -49,8 +50,6 @@ class DummyCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
@@ -73,7 +72,8 @@ class DummyCommand extends Command
         $validator = Validator::make(['value' => $id], ['value' => Rule::in($choices)]);
 
         if($validator->fails()) {
-            return $this->error('Invalid ID provided');
+            $this->error('Invalid ID provided');
+            exit(1);
         }
 
         $this->tenantService->makeDummy($id);
@@ -84,12 +84,12 @@ class DummyCommand extends Command
     /**
      * Format given tenants to columns with specific attributes
      *
-     * @param \Illuminate\Database\Eloquent\Collection|Tenant[] $tenants
+     * @param Collection|Tenant[] $tenants
      * @param array $attributes Attributes need to be returned
      *
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
-    protected function formatTenants($tenants, array $attributes)
+    protected function formatTenants($tenants, array $attributes): \Illuminate\Support\Collection
     {
         $tenants = collect($tenants->toArray());
 

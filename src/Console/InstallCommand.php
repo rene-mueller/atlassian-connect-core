@@ -3,6 +3,7 @@
 namespace AtlassianConnectCore\Console;
 
 use AtlassianConnectCore\Services\TenantService;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,7 +19,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'plugin:install';
+    protected $signature = 'connect:install';
 
     /**
      * The console command description.
@@ -47,7 +48,7 @@ class InstallCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @throws Exception
      */
     public function handle()
     {
@@ -56,11 +57,13 @@ class InstallCommand extends Command
 
     /**
      * Create the dummy tenant
+     *
+     * @throws Exception
      */
     protected function createDummyTenant()
     {
         if(!Schema::hasTable($tableName = config('connect.tenant'))) {
-            throw new \Exception('Table ' . $tableName . ' should be exist. Please, run migrations');
+            throw new Exception('Table ' . $tableName . ' should be exist. Please, run migrations');
         }
 
         $this->tenantService->createOrUpdate([
