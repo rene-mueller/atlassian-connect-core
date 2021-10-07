@@ -57,7 +57,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->publishes([__DIR__ . '/../config/connect.php' => config_path('connect.php')], 'config');
         $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/plugin')], 'views');
-        $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/plugin')], 'public');
     }
 
     /**

@@ -255,22 +255,7 @@ class Descriptor
                 'ADMIN',
                 'ACT_AS_USER'
             ],
-            'modules' => [
-                'generalPages' => [
-                    [
-                        'key' => 'hello-page',
-                        'url' => '/hello',
-                        'name' => [
-                            'value' => 'Your add-on'
-                        ],
-                        'icon' => [
-                            'width' => 20,
-                            'height' => 20,
-                            'url' => asset('vendor/plugin/package.png'),
-                        ]
-                    ],
-                ]
-            ],
+            'modules' => [],
             'apiMigrations' => [
                 'context-qsh' => true,
             ]
