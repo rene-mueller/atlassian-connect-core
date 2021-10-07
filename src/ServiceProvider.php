@@ -43,7 +43,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/connect.php', 'plugin'
+            __DIR__ . '/../config/connect.php', 'connect'
         );
 
         $this->registerFacades();
@@ -56,7 +56,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     protected function loadPublishes()
     {
         $this->publishes([__DIR__ . '/../config/connect.php' => config_path('connect.php')], 'config');
-        $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/plugin')], 'views');
+        $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/connect')], 'views');
     }
 
     /**
@@ -99,7 +99,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function loadViews()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'plugin');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'connect');
     }
 
     /**
