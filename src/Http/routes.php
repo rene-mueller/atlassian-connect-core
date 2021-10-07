@@ -3,7 +3,7 @@
 use AtlassianConnectCore\Http\Middleware\JWTAuth;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('connect.')
+Route::name('connect.')
     ->namespace('AtlassianConnectCore\Http\Controllers')
     ->group(function () {
         Route::get('atlassian-connect.json', 'TenantController@descriptor')->name('descriptor');
